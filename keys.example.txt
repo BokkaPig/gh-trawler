@@ -1,0 +1,28 @@
+# gh-trawl key patterns -- Python regex, matched against the key name,
+# case-insensitive. Default section is secret; prefix a line with
+# 'user:' for identity keys. Feed back with --keys <file>.
+
+secret
+api[_-]?key
+access[_-]?key
+passw(or)?d
+passwd
+(?<![a-z])pass(?![a-z])
+pwd
+jwt
+token
+private[_-]?key
+salt
+encryption
+credential
+client[_-]?secret
+auth[_-]?(token|secret|key|pass|code)
+(?<![a-z])pin(?![a-z])
+root[_-]?pw
+bootstrap[_-]?pass
+
+user: (^|[_.\-])(user(name)?|login|account|admin)([_.\-]|$)
+user: (^|[_.\-])root([_.\-](user|name|account))?$
+user: admin[_-]?user
+user: default[_-]?user
+user: initial[_-]?admin
